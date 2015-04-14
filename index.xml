@@ -4,25 +4,19 @@
     <parameter name="height" type="int" default="2"/>
     <parameter name="type" type="int" default="2"/>
     <parameter name="indent" type="int" default="1"/>
-    <script type="text/openjscad">
+    <script>
 
         function main() {
-            var width = params.width;
-            var length = params.length;
-            var height = params.height;
-            var type = params.type;
-            var indent = params.indent;
-            
             // handles different tag types
-            if (type == 1) { type = 4; }
+            if (params.type == 1) { params.type = 4; }
             
-            else if (type == 2) { type = 6; }
+            else if (params.type == 2) { params.type = 6; }
             
-            else { type = 100; }
+            else { params.type = 100; }
 
             // handles minimum values
-            if (width < 8) { width = 8; }
-            if (length < 5) { length = 5; }
+            if (params.width < 8) { params.width = 8; }
+            if (params.length < 5) { params.length = 5; }
             
             // assembled tag
             return difference(
@@ -36,42 +30,42 @@
             
                 // parts
                 b = cube({
-                    size: [width, length, height],
+                    size: [params.width, params.length, params.height],
                     round: false,
                     center: true
                 });
                 
                 top = cylinder({
-                    r: width / 2,
-                    h: height,
-                    fn: type,
+                    r: params.width / 2,
+                    h: params.height,
+                    fn: params.type,
                     center: true
                 });
                 
                 topDiff = cube({
-                    size: [width, width, height],
+                    size: [params.width, params.width, params.height],
                     center: true
                 });
 
                 // transformations
-                top = top.translate([0, length / 2, 0]);
+                top = top.translate([0, params.length / 2, 0]);
                 top = difference(
                     top,
-                    topDiff.translate([0, -width/2, 0])
+                    topDiff.translate([0, -params.width/2, 0])
                 );
                 
                 b = union(top, b);
 
                 // handles indent parameter
-                if (indent) {
+                if (params.indent) {
                     indentDiff = cube({
-                        size: [width - 2, length - 2, height],
+                        size: [params.width - 2, params.length - 2, params.height],
                         center: true
                     });
                     
                     b = difference(
                         b,
-                        indentDiff.translate([0, 0, height - 1])
+                        indentDiff.translate([0, 0, params.height - 1])
                     );
                 }
                 
@@ -79,16 +73,12 @@
             }
             
             function hole() {
-                var h;
-                
                 // parts
-                h = cylinder({
+                return cylinder({
                     r: 1,
-                    h: height * 2,
+                    h: params.height * 2,
                     center: true
-                }).translate([0, (length / 2) + (width / 4), -1]);
-                
-                return h;
+                }).translate([0, (params.length / 2) + (params.width / 4), -1]);
             }
         }
         
