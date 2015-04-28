@@ -1,4 +1,4 @@
-<craft>
+<craft name="tag">
     <parameter name="width" type="int" default="15"/>
     <parameter name="length" type="int" default="20"/>
     <parameter name="height" type="int" default="2"/>
