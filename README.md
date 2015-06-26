@@ -21,12 +21,12 @@ Parameterized tag model.
 ```html
 <craft>
 	<craft name="tag" module="craft-tag"/>
-	<lineup spacing="1">
+	<row spacing="1">
 		<tag type="1" height="8"></tag>
 		<tag width="30"></tag>
 		<tag type="3" length="35" height="5"></tag>
 		<tag></tag>
-	</lineup>
+	</row>
 </craft>
 ```
 
