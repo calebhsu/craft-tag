@@ -1,6 +1,6 @@
 {
   "name": "craft-tag",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Parameterized Tag Model",
   "main": "index.js",
   "scripts": {

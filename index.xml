@@ -6,8 +6,7 @@
     <parameter name="indent" type="int" default="1"/>
     
     <g transform="mirrorY()">
-        <script>
-    
+        <script type="text/openjscad">
             function main() {
                 // handles different tag types
                 if (params.type == 1) { params.type = 4; }
@@ -83,7 +82,6 @@
                     }).translate([0, (params.length / 2) + (params.width / 4), -1]);
                 }
             }
-            
         </script>
     </g>
     
